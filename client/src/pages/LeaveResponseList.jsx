@@ -7,8 +7,6 @@ import { getRequests } from "../redux/userSlice";
 const LeaveResponseList = () => {
   const { requests } = useSelector((state) => state?.user);
 
-  console.log(requests);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

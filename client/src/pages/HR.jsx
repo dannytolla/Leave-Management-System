@@ -37,11 +37,8 @@ const HR = () => {
               key={index}
               disableGutters
               secondaryAction={
-                <Link to={`/hr/${leave?.userId?._id}`} className="">
-                  <button
-                    className="p-3  text-blue-500"
-                    onClick={() => console.log(index)}
-                  >
+                <Link to={`/hr/${leave?._id}`} className="">
+                  <button className="p-3 text-blue-600 font-semibold py-1 px-3 bg-white outline md:px-10">
                     View Detail
                   </button>
                 </Link>
@@ -50,6 +47,7 @@ const HR = () => {
               <ListItemText primary={`${++index}. ${leave?.userId?.name}`} />
               <ListItemText primary={`${++index}. ${leave?.userId?.gender}`} />
               <ListItemText primary={` ${leave?.type}`} />
+              <ListItemText primary={` ${leave?.status}`} />
               <ListItemText />
               {/* <ListItemText primary={`Line New ${value}`} /> */}
             </ListItem>

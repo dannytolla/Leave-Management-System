@@ -38,7 +38,7 @@ const UserSchema = new Schema(
       type: Number,
       default: 120,
     },
-    maternity: {
+    maternityLeave: {
       type: Number,
       default: 5,
     },

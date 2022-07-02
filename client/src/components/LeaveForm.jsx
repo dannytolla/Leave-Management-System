@@ -88,7 +88,7 @@ const LeaveForm = () => {
     e.preventDefault();
     let success = true;
 
-    if (maxDay < leaveDays) {
+    if (+maxDay < +leaveDays) {
       success = false;
       toast.error(
         `Insufficient  Balance.  Remaining Balance is ${maxDay} days`
@@ -133,7 +133,7 @@ const LeaveForm = () => {
               >
                 <MenuItem value={"Sick Leave"}>Sick Leave</MenuItem>
                 <MenuItem value={"Casual Leave"}>Casual Leave</MenuItem>
-                {data?.gender === "Male" ? (
+                {data?.gender === "Female" ? (
                   <MenuItem value={"Maternity Leave"}>Maternity Leave</MenuItem>
                 ) : (
                   <MenuItem value={"Paternity Leave"}>Paternity Leave</MenuItem>

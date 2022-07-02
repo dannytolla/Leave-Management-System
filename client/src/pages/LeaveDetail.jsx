@@ -52,12 +52,12 @@ const LeaveDetail = () => {
             Name: <span>{leave?.userId?.name}</span>
           </p>
           <p className="px-4 py-2">
-            Male: <span> {leave?.userId?.gender}</span>
+            Gender: <span> {leave?.userId?.gender}</span>
           </p>
           <p className="px-4 py-2">
             userId: <span>{leave?.userId?.userId}</span>
           </p>
-          <p className="px-4 py-2">Requested Leave: {leave?.leaveDays}</p>
+          <p className="px-4 py-2">Requested Leave Days: {leave?.leaveDays}</p>
           <p className="px-4 py-2">
             From Date: {moment(leave?.startDate).format("MMMM d, YYYY")}
           </p>

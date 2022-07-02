@@ -12,7 +12,6 @@ exports.getLeaves = asyncHandler(async (req, res) => {
 });
 
 exports.getRequests = asyncHandler(async (req, res) => {
-  console.log(req.user.id);
   const leaveRequests = await Leave.find({ userId: req.user.id })
     .where("status")
     .ne("Pending")
@@ -22,10 +21,11 @@ exports.getRequests = asyncHandler(async (req, res) => {
 });
 
 exports.getLeave = asyncHandler(async (req, res) => {
-  const leave = await Leave.findOne({ userId: req.params.id }).populate(
+  const leave = await Leave.findById(req.params.id).populate("userId", [
+    "name",
     "userId",
-    ["name", "userId", "gender"]
-  );
+    "gender",
+  ]);
 
   if (!leave) {
     res.status(404);
@@ -36,7 +36,7 @@ exports.getLeave = asyncHandler(async (req, res) => {
 });
 
 exports.changeStatus = asyncHandler(async (req, res) => {
-  const leave = await Leave.findOne({ userId: req.params.id });
+  const leave = await Leave.findById(req.params.id);
 
   if (!leave) {
     res.status(404);

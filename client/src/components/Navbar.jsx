@@ -33,7 +33,7 @@ const Navbar = () => {
                 </Link>
               )}
               <button
-                className="hover:bg-red-600 hover:px-2 rounded"
+                className="hover:bg-red-600 hover:px-2 rounded text-red-600 hover:text-white"
                 onClick={handleClick}
               >
                 Logout
