@@ -27,3 +27,10 @@ npm run dev
 ## Website Link
 
 https://lms-dan.herokuapp.com/
+
+### To login in 
+
+```
+use userId = 1 for HR Manager and
+user userId = 2 or 3 for Employee
+```
