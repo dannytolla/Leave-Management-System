@@ -11,6 +11,16 @@ exports.getLeaves = asyncHandler(async (req, res) => {
   res.status(201).json(leaveRequests);
 });
 
+exports.getRequests = asyncHandler(async (req, res) => {
+  console.log(req.user.id);
+  const leaveRequests = await Leave.find({ userId: req.user.id })
+    .where("status")
+    .ne("Pending")
+    .populate("userId", ["name", "userId", "gender"]);
+
+  res.status(201).json(leaveRequests);
+});
+
 exports.getLeave = asyncHandler(async (req, res) => {
   const leave = await Leave.findOne({ userId: req.params.id }).populate(
     "userId",
