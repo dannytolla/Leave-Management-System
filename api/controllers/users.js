@@ -36,6 +36,8 @@ exports.getLeave = asyncHandler(async (req, res) => {
 });
 
 exports.changeStatus = asyncHandler(async (req, res) => {
+  const { type, status, uId, leaveDays } = req.body;
+  let user = await User.findOne({ userId: uId });
   const leave = await Leave.findById(req.params.id);
 
   if (!leave) {
@@ -45,13 +47,28 @@ exports.changeStatus = asyncHandler(async (req, res) => {
 
   leave.status = req.body.status;
 
+  if (status === "Accepted") {
+    if (type === "Sick Leave") {
+      user.sickLeave = user.sickLeave - leaveDays;
+    } else if (type === "Casual Leave") {
+      user.casualLeave = user.casualLeave - leaveDays;
+    } else if (type === "Maternity Leave") {
+      user.maternityLeave = user.maternityLeave - leaveDays;
+    } else if (type === "Paternity Leave") {
+      user.paternity = user.paternity - leaveDays;
+    } else if (type === "Legal Leave") {
+      user.legalLeave = user.legalLeave - leaveDays;
+    }
+
+    await user.save();
+  }
+
   await leave.save();
 
   res.status(200).json(leave);
 });
 
 exports.createLeaveRequest = asyncHandler(async (req, res) => {
-  let user = await User.findOne({ userId: req.user.userId });
   const { type, leaveDays, startDate, endDate } = req.body;
 
   const leave = await Leave.create({

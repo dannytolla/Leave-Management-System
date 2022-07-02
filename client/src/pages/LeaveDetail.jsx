@@ -19,7 +19,10 @@ const LeaveDetail = () => {
   const handleAccept = () => {
     const data = {
       id,
+      uId: leave?.userId?.userId,
+      type: leave?.type,
       status: "Accepted",
+      leaveDays: leave?.leaveDays,
     };
     dispatch(changeStatus(data));
     navigate("/hr");
@@ -59,10 +62,10 @@ const LeaveDetail = () => {
           </p>
           <p className="px-4 py-2">Requested Leave Days: {leave?.leaveDays}</p>
           <p className="px-4 py-2">
-            From Date: {moment(leave?.startDate).format("MMMM d, YYYY")}
+            From Date: {moment(leave?.startDate).format("MMMM Do, YYYY")}
           </p>
           <p className="px-4 py-2">
-            To Date: {moment(leave?.endDate).format("MMMM d, YYYY")}
+            To Date: {moment(leave?.endDate).format("MMMM Do, YYYY")}
           </p>
           <div className="flex flex-row justify-center my-4 space-x-12">
             <div className="">

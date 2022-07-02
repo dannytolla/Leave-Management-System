@@ -59,13 +59,17 @@ const getLeave = async (userId, id) => {
   return res.data;
 };
 
-const updateStatus = async (userId, { id, status }) => {
+const updateStatus = async (userId, { id, status, uId, type, leaveDays }) => {
   const config = {
     headers: {
       Authorization: `Bearer ${userId}`,
     },
   };
-  const res = await axios.put(API_URL + `${id}/`, { status }, config);
+  const res = await axios.put(
+    API_URL + `${id}/`,
+    { status, uId, type, leaveDays },
+    config
+  );
 
   return res.data;
 };
