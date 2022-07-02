@@ -35,6 +35,7 @@ const LeaveDetail = () => {
     };
     dispatch(changeStatus(data));
     navigate("/hr");
+    history.go(0);
   };
 
   if (isLoading) {
